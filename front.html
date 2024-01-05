@@ -1,0 +1,24 @@
+<!-- AnkiDict Card Template v1.0.0 https://github.com/mikkkee/anki-dict-card-template -->
+<div class="aw-title">{{Word}}</div>
+
+<script>
+  function playAudio(event, audioId) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    var btn = event.target;
+    if (btn.tagName == "BUTTON") {
+      btn = btn.children[0];
+    }
+    var audioEle = document.getElementById(audioId);
+
+    audioEle.onplay = function () {
+      btn.classList.add("playing");
+    };
+    audioEle.onended = function () {
+      btn.classList.remove("playing");
+    };
+
+    audioEle.play();
+  }
+</script>
